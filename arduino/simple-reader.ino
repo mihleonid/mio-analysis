@@ -10,5 +10,5 @@ void loop() {
 	char b=(val&0b1111100000)>>4;
 	Serial.print(a);
 	Serial.print(b);
-	delay(250);
+	delay(20);
 }

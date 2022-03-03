@@ -7,7 +7,7 @@ import serial_receiver as receiver
 
 threading.Thread(target=receiver.loop, daemon=True).start()
 def animate(i):
-    y_values = receiver.data[-35:]
+    y_values = receiver.data[-40:]
     x_values = list(range(len(y_values)))
     plt.cla()
     plt.ylim(0, 1024)
