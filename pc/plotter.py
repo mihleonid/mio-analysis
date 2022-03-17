@@ -3,7 +3,7 @@ import os
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 
-import serial_receiver as receiver
+import wifi_receiver as receiver
 
 threading.Thread(target=receiver.loop, daemon=True).start()
 def animate(i):
