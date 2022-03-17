@@ -1,6 +1,7 @@
 import serial
 SERIALPORT = "/dev/ttyUSB0"
 BAUDRATE = 115200
+MAX = 1023
 
 serialPort = serial.Serial(SERIALPORT, BAUDRATE)
 

@@ -1,4 +1,5 @@
 import time
+MAX = 200
 
 data = []
 def loop():
