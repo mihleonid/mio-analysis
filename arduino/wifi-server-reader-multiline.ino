@@ -64,12 +64,12 @@ void setup(void) {
 
 void loop(void) {
 	if(!last){
-		last=1;
+		last = 1;
 	}
-	for(int i=last;i<MEM_SZ;++i){
-		MEMORY[i-1]=MEMORY[i];
+	for(int i = last;i < MEM_SZ;++i){
+		MEMORY[i-1] = MEMORY[i];
 	}
-	MEMORY[MEM_SZ-1]=analogRead(34);
+	MEMORY[MEM_SZ-1] = analogRead(34);
 	--last;
 	server.handleClient();
 	delay(2);//allow the cpu to switch to other tasks
