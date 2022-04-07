@@ -1,1 +1,2 @@
-Add fast communication (non-text)
+Add fast communication (non-text) for bits different from 10.
+Change wifi address to more obvious.
