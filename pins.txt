@@ -1,0 +1,4 @@
+Diode: 34.
+Btn: 35.
+EncoderA: 32.
+EncoderB: 25.
