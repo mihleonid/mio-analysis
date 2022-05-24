@@ -6,6 +6,8 @@ MAX = 4095
 serialPort = serial.Serial(SERIALPORT, BAUDRATE)
 
 data = []
+def has_time():
+	return False
 def loop():
 	while True:
 		if serialPort.in_waiting > 0:

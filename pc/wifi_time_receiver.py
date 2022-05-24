@@ -3,8 +3,9 @@ ADDR = "http://192.168.43.24/13"
 MAX = 4095
 
 data = []
+data_time = []
 def has_time():
-	return False
+	return True
 def loop():
 	while True:
 		r = requests.get(ADDR)
