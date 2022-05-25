@@ -4,12 +4,19 @@ void setup(){
 	display_init();
 	adc_init();
 	encoder_init();
+	clock_init();
+	events_init();
 }
 void loop(){
+	clock_loop();
 	if(main_tick&1==1){
 		encoder_loop();
 	}
+	if(main_tick==3){
+		events_loop();
+	}
 	adc_loop();
+	//logic_loop();
 	if(main_tick==3){
 		display_loop();
 	}
