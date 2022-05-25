@@ -2,3 +2,4 @@ __pycache__/
 *.py[cod]
 *.o
 *.sw[pon]
+burn.ino
