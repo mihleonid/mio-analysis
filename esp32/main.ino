@@ -1,11 +1,12 @@
 int main_tick=0;
 void setup(){
 	Serial.begin(115200);
-	display_init();
-	adc_init();
-	encoder_init();
 	clock_init();
 	events_init();
+	adc_init();
+	encoder_init();
+	display_init();
+	logic_init();
 }
 void loop(){
 	clock_loop();
@@ -16,7 +17,7 @@ void loop(){
 		events_loop();
 	}
 	adc_loop();
-	//logic_loop();
+	logic_loop();
 	if(main_tick==3){
 		display_loop();
 	}
