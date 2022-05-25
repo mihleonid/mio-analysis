@@ -26,21 +26,24 @@ void encoder_init(){
 void encoder_loop(){
 	MD_UISwitch::keyResult_t k=encoder_switch.read();
 	switch(k){
-		case MD_UISwitch::KEY_NULL:      /*Serial.print("KEY_NULL");     */break;
-		case MD_UISwitch::KEY_UP:        /*Serial.print("\nKEY_UP ");    */break;
-		case MD_UISwitch::KEY_DOWN:      /*Serial.print("\n\nKEY_DOWN"); */break;
-		case MD_UISwitch::KEY_PRESS:     Serial.println("KEY_PRESS");      break;
-		case MD_UISwitch::KEY_DPRESS:    Serial.println("KEY_DOUBLE");     break;
-		case MD_UISwitch::KEY_LONGPRESS: Serial.println("KEY_LONG");       break;
-		case MD_UISwitch::KEY_RPTPRESS:  /*Serial.print("\nKEY_REPEAT ");*/break;
-		default:                         /*Serial.print("\nKEY_UNKNWN ");*/break;
+		//case MD_UISwitch::KEY_NULL:{}
+		//case MD_UISwitch::KEY_UP:{}
+		//case MD_UISwitch::KEY_DOWN:{}
+		case MD_UISwitch::KEY_PRESS:{
+			events_push(CLICK);
+			break;
+		}
+		//case MD_UISwitch::KEY_DPRESS:{}
+		//case MD_UISwitch::KEY_LONGPRESS:{}
+		//case MD_UISwitch::KEY_RPTPRESS:{}
+		default:{break;}
 	}
 	uint8_t x=encoder_rotary.read();
 	if(x){
 		if(x==DIR_CW){
-			Serial.println("NEXT");
+			events_push(ROT_NEG);
 		}else{
-			Serial.println("PREV");
+			events_push(ROT_POS);
 		}
 	}
 }
