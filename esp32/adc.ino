@@ -1,3 +1,4 @@
+#include <inttypes.h>
 #include <Adafruit_ADS1015.h>
 Adafruit_ADS1115 ads(0x48);
 void adc_init(){

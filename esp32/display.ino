@@ -11,7 +11,7 @@ bool __display_blink=0;
 bool __display_cursor=0;
 bool __display_back=1;
 
-void display(String str){
+void display(const String& str){
 	int x=0;
 	int y=0;
 	for(int i=0;i<str.length();++i){

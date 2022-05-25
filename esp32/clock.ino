@@ -1,3 +1,4 @@
+#include "inttypes.h"
 #include "time.h"
 
 long clock_start;

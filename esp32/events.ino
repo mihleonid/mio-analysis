@@ -1,12 +1,13 @@
 #define EVENTS_MAX 100
 #define WAIT_SECS 3
-enum class Event{
-	NONE,
-	ROT_POS,//rotation
-	ROT_NEG,
-	CLICK,
-	WAIT,
-};
+
+#define Event short
+#define NONE 0
+//rotation
+#define ROT_POS 1
+#define ROT_NEG 2
+#define CLICK 3
+#define WAIT 4
 
 Event event_arr[EVENTS_MAX];
 int event_start=0;
@@ -18,7 +19,7 @@ void events_init(){
 }
 void events_loop(){
 	if(event_last_push+WAIT_SECS<clock_secs()){
-		events_push(Event::WAIT);
+		events_push(WAIT);
 	}
 }
 void events_push(Event e){
@@ -31,7 +32,7 @@ void events_push(Event e){
 }
 Event events_get(){
 	if(event_start==event_end){
-		return Event::NONE;
+		return NONE;
 	}else{
 		Event e=event_arr[event_start];
 		++event_start;
