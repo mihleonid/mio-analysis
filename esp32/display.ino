@@ -11,11 +11,11 @@ bool __display_blink=0;
 bool __display_cursor=0;
 bool __display_back=1;
 
-void display(const String& str){
+void display(char* str, int len){
 	int x=0;
 	int y=0;
-	for(int i=0;i<str.length();++i){
-		char c=str[i];
+	for(int i=0;i<len;++i){
+		char c=*(str+i);
 		if(c=='\n'){
 			++y;
 			x=0;
