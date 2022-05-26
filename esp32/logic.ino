@@ -16,9 +16,6 @@ void logic_init(){
 void logic_loop(){
 	Event e;
 	while((e=events_get())!=NONE){
-		if(e==WAIT){
-			e=CLICK;
-		}
 		if(logic_curr==MENU_MONITOR){
 			if(e==CLICK){
 				logic_curr=MONITOR;

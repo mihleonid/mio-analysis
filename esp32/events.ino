@@ -23,6 +23,19 @@ void events_loop(){
 	}
 }
 void events_push(Event e){
+	if(e==CLICK){
+		Serial.println("Click");
+	}
+	if(e==WAIT){
+		Serial.println("Wait");
+		e=CLICK;
+	}
+	if(e==ROT_POS){
+		Serial.println("Pos");
+	}
+	if(e==ROT_NEG){
+		Serial.println("Neg");
+	}
 	event_last_push=clock_secs();
 	event_arr[event_end]=e;
 	++event_end;
