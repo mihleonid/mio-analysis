@@ -23,6 +23,7 @@ void events_loop(){
 	}
 }
 void events_push(Event e){
+	Serial.println("Push");
 	if(e==CLICK){
 		Serial.println("Click");
 	}
@@ -49,8 +50,8 @@ Event events_get(){
 	}else{
 		Event e=event_arr[event_start];
 		++event_start;
-		if(event_end==EVENTS_MAX){
-			event_end=0;
+		if(event_start==EVENTS_MAX){
+			event_start=0;
 		}
 		return e;
 	}
