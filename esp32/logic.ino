@@ -5,8 +5,10 @@
 #define METHOD_WIFI	3
 #define METHOD_USB	4
 #define METHOD_BLE	5
+#define MENU_ECO	6
+#define ECO_MODE	7
 
-const int wheelLen=2;
+const int wheelLen=3;
 State wheel[wheelLen];
 int wheelCurr=0;
 
@@ -55,6 +57,7 @@ void updateWheel(){
 void logic_init(){
 	wheel[0]=MENU_MONITOR;
 	wheel[1]=MENU_METHOD;
+	wheel[1]=MENU_ECO;
 
 	wheelMethod[0]=METHOD_USB;
 	wheelMethod[1]=METHOD_WIFI;
@@ -114,6 +117,24 @@ void logic_loop(){
 						wheelDec();
 						goto end;
 				}
+			case ECO_MODE:
+				if(e!=WAIT){
+					logic_curr=MENU_ECO;
+				}
+				goto end;
+			case MENU_ECO:
+				switch(e){
+					case CLICK:
+					case WAIT:
+						logic_curr=ECO_MODE;
+						goto end;
+					case ROT_POS:
+						wheelInc();
+						goto end;
+					case ROT_NEG:
+						wheelDec();
+						goto end;
+				}
 			case METHOD_USB:
 			case METHOD_WIFI:
 			case METHOD_BLE:
@@ -132,6 +153,7 @@ void logic_loop(){
 		}
 		end:;
 	}
+	display_set_back(1);
 	switch(logic_curr){
 		case MONITOR:
 			if(display_ready()){
@@ -143,6 +165,12 @@ void logic_loop(){
 			break;
 		case MENU_METHOD:
 			display("Select sending\nmethod");
+			break;
+		case MENU_ECO:
+			display("Go to\neco mode");
+			break;
+		case ECO_MODE:
+			display_set_back(0);
 			break;
 		case METHOD_USB:
 			display("Send by\nSerial port");
