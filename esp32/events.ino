@@ -10,11 +10,13 @@
 #define WAIT	4
 
 Event event_arr[EVENTS_MAX];
-int event_start=0;
-int event_end=0;
-long event_last_push=0;
+int event_start;
+int event_end;
+long event_last_push;
 
 void events_init(){
+	event_start=0;
+	event_end=0;
 	event_last_push=clock_secs();
 }
 void events_loop(){

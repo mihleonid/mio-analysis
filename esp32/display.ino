@@ -4,14 +4,13 @@ char lcdLines[lcdRows][lcdColumns];
 char lcdLines_prev[lcdRows][lcdColumns];
 LiquidCrystal_I2C lcd(0x27, lcdColumns, lcdRows);
 
-bool __display_blink_prev=1;
-bool __display_cursor_prev=1;
-bool __display_back_prev=0;
+bool __display_blink_prev;
+bool __display_cursor_prev;
+bool __display_back_prev;
 long __display_prev;
-
-bool __display_blink=0;
-bool __display_cursor=0;
-bool __display_back=1;
+bool __display_blink;
+bool __display_cursor;
+bool __display_back;
 
 bool __diff(char* a, char* b, int len){
 	bool mark=0;
@@ -72,6 +71,12 @@ void display_set_cursor(bool c){
 	__display_cursor=c;
 }
 void display_init(){
+	__display_blink_prev=1;
+	__display_cursor_prev=1;
+	__display_back_prev=0;
+	__display_blink=0;
+	__display_cursor=0;
+	__display_back=1;
 	__display_prev=-CLOCKS_PER_SEC;
 	lcd.init();
 	lcd.backlight();

@@ -8,6 +8,9 @@ void setup(){
 	display_init();
 	logic_init();
 }
+void reboot(){
+	setup();
+}
 void loop(){
 	clock_loop();
 	if(main_tick&1){

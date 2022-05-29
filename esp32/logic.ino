@@ -10,11 +10,11 @@
 
 const int wheelLen=3;
 State wheel[wheelLen];
-int wheelCurr=0;
+int wheelCurr;
 
 const int wheelMethodLen=3;
 State wheelMethod[wheelMethodLen];
-int wheelMethodCurr=0;
+int wheelMethodCurr;
 
 State logic_curr;
 State logic_curr_method;

@@ -1,20 +1,17 @@
-#include <MD_REncoder.h> // This library for rotary
-unsigned long lastDebounceTime = 0;  // the last time the output pin was toggled
-unsigned long debounceDelay = 50;    // the debounce time; increase if the output flickers
-#define RotaryPinA 32 //SET DT PIN
-#define RotaryPinB 25 //SET CLK PIN
-MD_REncoder encoder_rotary = MD_REncoder(RotaryPinA, RotaryPinB);
-
-#include <MD_UISwitch.h> //This library for button click (on the rotary)
-const uint8_t DIGITAL_SWITCH_PIN = 34;       // SET SW PIN
-const uint8_t DIGITAL_SWITCH_ACTIVE = LOW;   // digital signal when switch is pressed 'on'
+#include <MD_REncoder.h>
+unsigned long lastDebounceTime=0;
+unsigned long debounceDelay=50;
+#define RotaryPinA 32//SET DT PIN
+#define RotaryPinB 25//SET CLK PIN
+MD_REncoder encoder_rotary=MD_REncoder(RotaryPinA, RotaryPinB);
+#include <MD_UISwitch.h>
+const uint8_t DIGITAL_SWITCH_PIN = 34;//SET SW PIN
+const uint8_t DIGITAL_SWITCH_ACTIVE = LOW;// digital signal when switch is pressed 'on'
 MD_UISwitch_Digital encoder_switch(DIGITAL_SWITCH_PIN, DIGITAL_SWITCH_ACTIVE);
-
 #include <Ticker.h>
-
-Ticker tick; /* timer for interrupt handler */
-
+Ticker tick;//timer for interrupt handler
 void encoder_init(){
+	lastDebounceTime=0;
 	encoder_rotary.begin();
 	encoder_switch.begin();
 	encoder_switch.enableDoublePress(false);
