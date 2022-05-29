@@ -10,9 +10,9 @@ void setup(){
 }
 void loop(){
 	clock_loop();
-	//if(main_tick&1==1){
+	if(main_tick&1){
 		encoder_loop();
-	//}
+	}
 	if(main_tick==3){
 		events_loop();
 	}
