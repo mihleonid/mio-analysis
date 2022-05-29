@@ -11,11 +11,12 @@ bool __display_blink=0;
 bool __display_cursor=0;
 bool __display_back=1;
 
-void display(char* str, int len){
+void display(const String& str){
+	int len=str.length();
 	int x=0;
 	int y=0;
 	for(int i=0;i<len;++i){
-		char c=*(str+i);
+		char c=str[i];
 		if(c=='\n'){
 			++y;
 			x=0;
@@ -72,6 +73,7 @@ void display_loop(){
 		}
 		__display_cursor_prev=__display_cursor;
 	}
+	return; //TODO display output
 	for(int i=0;i<lcdRows;++i){
 		lcd.setCursor(0, i);
 		lcd.printstr(lcdLines[i]);
