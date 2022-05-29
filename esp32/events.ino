@@ -1,5 +1,5 @@
 #define EVENTS_MAX 100
-#define WAIT_SECS 3
+#define WAIT_SECS 5
 
 #define Event short
 #define NONE 0
@@ -23,13 +23,13 @@ void events_loop(){
 	}
 }
 void events_push(Event e){
-	Serial.println("Push");
+#ifdef DEBUG_SERIAL
+	Serial.print("Push: ");
 	if(e==CLICK){
 		Serial.println("Click");
 	}
 	if(e==WAIT){
 		Serial.println("Wait");
-		e=CLICK;
 	}
 	if(e==ROT_POS){
 		Serial.println("Pos");
@@ -37,6 +37,7 @@ void events_push(Event e){
 	if(e==ROT_NEG){
 		Serial.println("Neg");
 	}
+#endif
 	event_last_push=clock_secs();
 	event_arr[event_end]=e;
 	++event_end;
