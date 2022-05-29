@@ -118,11 +118,17 @@ void display_loop(){
 		if(__diff(lcdLines[i], lcdLines_prev[i], lcdColumns)){
 			lcd.setCursor(0, i);
 			lcd.printstr(lcdLines[i]);
+			__display_prev=clock_get();
 		}
 	}
-	__display_prev=clock_get();
 }
 bool display_loop_force(){
+	__display_blink_prev=1;
+	__display_cursor_prev=1;
+	__display_back_prev=0;
+	__display_blink=0;
+	__display_cursor=0;
+	__display_back=1;
 	__display_prev=-CLOCKS_PER_SEC;
 	display_loop();
 }

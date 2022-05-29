@@ -1,4 +1,12 @@
 int main_tick=0;
+void panic(String no){
+	String msg="Error UB"+no+"\nRebooting";
+	Serial.println(msg);
+	display(msg);
+	display_loop_force();
+	delay(4000);
+	reboot();
+}
 void setup(){
 	Serial.begin(115200);
 	clock_init();

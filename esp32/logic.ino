@@ -182,15 +182,11 @@ void logic_loop(){
 			display("Work in progress\nBLE");
 			break;
 		default:
-			display("Error UB0\nRebooting");
-			display_loop_force();
-			Serial.println("Error UB0\nRebooting");
-			delay(4000);
-			reboot();
+			panic("0");
 	}
 	switch(logic_curr_method){
 		case METHOD_USB:
-			Serial.println("USB");
+			Serial.println(String(adc_voltage(0)));
 			break;
 		case METHOD_WIFI:
 			Serial.println("WIFI");
@@ -199,10 +195,6 @@ void logic_loop(){
 			Serial.println("BLE");
 			break;
 		default:
-			display("Error UB1\nRebooting");
-			display_loop_force();
-			Serial.println("Error UB1\nRebooting");
-			delay(4000);
-			reboot();
+			panic("1");
 	}
 }
