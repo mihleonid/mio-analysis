@@ -134,7 +134,9 @@ void logic_loop(){
 	}
 	switch(logic_curr){
 		case MONITOR:
-			display(String(adc_voltage(0)));
+			if(display_ready()){
+				display(String(adc_voltage(0)));
+			}
 			break;
 		case MENU_MONITOR:
 			display("Monitor of\nsignal");

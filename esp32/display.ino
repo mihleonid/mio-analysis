@@ -78,6 +78,9 @@ void display_init(){
 	display_clear_force();
 	display_loop();
 }
+bool display_ready(){
+	return __display_prev+CLOCKS_PER_SEC/24<=clock_get();
+}
 void display_loop(){
 	if(__display_back!=__display_back_prev){
 		if(__display_back){
@@ -103,7 +106,7 @@ void display_loop(){
 		}
 		__display_cursor_prev=__display_cursor;
 	}
-	if(__display_prev+CLOCKS_PER_SEC/24>clock_get()){
+	if(!display_ready()){
 		return;
 	}
 	for(int i=0;i<lcdRows;++i){
