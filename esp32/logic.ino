@@ -57,7 +57,7 @@ void updateWheel(){
 void logic_init(){
 	wheel[0]=MENU_MONITOR;
 	wheel[1]=MENU_METHOD;
-	wheel[1]=MENU_ECO;
+	wheel[2]=MENU_ECO;
 
 	wheelMethod[0]=METHOD_USB;
 	wheelMethod[1]=METHOD_WIFI;
