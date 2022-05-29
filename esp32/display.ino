@@ -1,6 +1,7 @@
 const int lcdColumns=16;
 const int lcdRows=2;
 char lcdLines[lcdRows][lcdColumns];
+char lcdLines_prev[lcdRows][lcdColumns];
 LiquidCrystal_I2C lcd(0x27, lcdColumns, lcdRows);
 
 bool __display_blink_prev=1;
@@ -10,6 +11,17 @@ bool __display_back_prev=0;
 bool __display_blink=0;
 bool __display_cursor=0;
 bool __display_back=1;
+
+bool __diff(char* a, char* b, int len){
+	bool mark=0;
+	for(int i=0;i<len;++i){
+		if(a[i]!=b[i]){
+			b[i]=a[i];
+			mark=1;
+		}
+	}
+	return mark;
+}
 
 void display(const String& str){
 	int len=str.length();
@@ -44,6 +56,7 @@ void display_init(){
 	for(int y=0;y<lcdRows;++y){
 		for(int x=0;x<lcdColumns;++x){
 			lcdLines[y][x]=' ';
+			lcdLines_prev[y][x]='0';
 		}
 	}
 	display_loop();
@@ -73,9 +86,10 @@ void display_loop(){
 		}
 		__display_cursor_prev=__display_cursor;
 	}
-	return; //TODO display output
 	for(int i=0;i<lcdRows;++i){
-		lcd.setCursor(0, i);
-		lcd.printstr(lcdLines[i]);
+		if(__diff(lcdLines[i], lcdLines_prev[i], lcdColumns)){
+			lcd.setCursor(0, i);
+			lcd.printstr(lcdLines[i]);
+		}
 	}
 }
