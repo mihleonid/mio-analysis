@@ -1,5 +1,5 @@
 #define EVENTS_MAX 100
-#define WAIT_SECS 5
+#define WAIT_SECS 3
 
 #define Event short
 #define NONE 0
