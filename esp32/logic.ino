@@ -87,8 +87,11 @@ void logic_loop(){
 			case MONITOR:
 			case MENU_MONITOR:
 				switch(e){
-					case CLICK:
 					case WAIT:
+						if(logic_curr==MONITOR){
+							goto end;
+						}
+					case CLICK:
 						toggle(logic_curr, MONITOR, MENU_MONITOR);
 						goto end;
 					case ROT_POS:

@@ -7,6 +7,7 @@ LiquidCrystal_I2C lcd(0x27, lcdColumns, lcdRows);
 bool __display_blink_prev=1;
 bool __display_cursor_prev=1;
 bool __display_back_prev=0;
+long __display_prev;
 
 bool __display_blink=0;
 bool __display_cursor=0;
@@ -71,6 +72,7 @@ void display_set_cursor(bool c){
 	__display_cursor=c;
 }
 void display_init(){
+	__display_prev=-CLOCKS_PER_SEC;
 	lcd.init();
 	lcd.backlight();
 	display_clear_force();
@@ -101,10 +103,14 @@ void display_loop(){
 		}
 		__display_cursor_prev=__display_cursor;
 	}
+	if(__display_prev+CLOCKS_PER_SEC/24>clock_get()){
+		return;
+	}
 	for(int i=0;i<lcdRows;++i){
 		if(__diff(lcdLines[i], lcdLines_prev[i], lcdColumns)){
 			lcd.setCursor(0, i);
 			lcd.printstr(lcdLines[i]);
 		}
 	}
+	__display_prev=clock_get();
 }
