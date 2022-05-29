@@ -13,9 +13,7 @@ void reboot(){
 }
 void loop(){
 	clock_loop();
-	if(main_tick&1){
-		encoder_loop();
-	}
+	encoder_loop();
 	if(main_tick==3){
 		events_loop();
 	}

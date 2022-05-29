@@ -122,3 +122,7 @@ void display_loop(){
 	}
 	__display_prev=clock_get();
 }
+bool display_loop_force(){
+	__display_prev=-CLOCKS_PER_SEC;
+	display_loop();
+}

@@ -182,7 +182,11 @@ void logic_loop(){
 			display("Work in progress\nBLE");
 			break;
 		default:
-			display("Error UB0\nRebooting"); //TODO add reboot
+			display("Error UB0\nRebooting");
+			display_loop_force();
+			Serial.println("Error UB0\nRebooting");
+			delay(4000);
+			reboot();
 	}
 	switch(logic_curr_method){
 		case METHOD_USB:
@@ -195,6 +199,10 @@ void logic_loop(){
 			Serial.println("BLE");
 			break;
 		default:
-			display("Error UB1\nRebooting"); //TODO add reboot
+			display("Error UB1\nRebooting");
+			display_loop_force();
+			Serial.println("Error UB1\nRebooting");
+			delay(4000);
+			reboot();
 	}
 }
