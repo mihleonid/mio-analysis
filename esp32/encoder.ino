@@ -6,7 +6,7 @@ unsigned long debounceDelay = 50;    // the debounce time; increase if the outpu
 MD_REncoder encoder_rotary = MD_REncoder(RotaryPinA, RotaryPinB);
 
 #include <MD_UISwitch.h> //This library for button click (on the rotary)
-const uint8_t DIGITAL_SWITCH_PIN = 33;       // SET SW PIN
+const uint8_t DIGITAL_SWITCH_PIN = 34;       // SET SW PIN
 const uint8_t DIGITAL_SWITCH_ACTIVE = LOW;   // digital signal when switch is pressed 'on'
 MD_UISwitch_Digital encoder_switch(DIGITAL_SWITCH_PIN, DIGITAL_SWITCH_ACTIVE);
 
