@@ -33,8 +33,15 @@ void encoder_loop(){
 			events_push(CLICK);
 			break;
 		}
-		//case MD_UISwitch::KEY_DPRESS:{}
-		//case MD_UISwitch::KEY_LONGPRESS:{}
+		case MD_UISwitch::KEY_DPRESS:{
+			events_push(CLICK);
+			events_push(CLICK);
+			break;
+		}
+		case MD_UISwitch::KEY_LONGPRESS:{
+			events_push(CLICK);
+			break;
+		}
 		//case MD_UISwitch::KEY_RPTPRESS:{}
 		default:{break;}
 	}
