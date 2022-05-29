@@ -14,3 +14,6 @@ long clock_get(){
 long clock_secs(){
 	return clock_get()/CLOCKS_PER_SEC;
 }
+double clock_secsd(){
+	return ((double)clock_get())/CLOCKS_PER_SEC;
+}
