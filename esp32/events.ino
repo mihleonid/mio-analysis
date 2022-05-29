@@ -2,12 +2,12 @@
 #define WAIT_SECS 3
 
 #define Event short
-#define NONE 0
+#define NONE	0
 //rotation
-#define ROT_POS 1
-#define ROT_NEG 2
-#define CLICK 3
-#define WAIT 4
+#define ROT_POS	1
+#define ROT_NEG	2
+#define CLICK	3
+#define WAIT	4
 
 Event event_arr[EVENTS_MAX];
 int event_start=0;
