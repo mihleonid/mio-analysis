@@ -23,7 +23,27 @@ bool __diff(char* a, char* b, int len){
 	return mark;
 }
 
+void display_clear(){
+	for(int y=0;y<lcdRows;++y){
+		for(int x=0;x<lcdColumns;++x){
+			lcdLines[y][x]=' ';
+		}
+	}
+}
+void display_clear_force(){
+	for(int y=0;y<lcdRows;++y){
+		for(int x=0;x<lcdColumns;++x){
+			lcdLines[y][x]=' ';
+			lcdLines_prev[y][x]='0';
+		}
+	}
+}
+
 void display(const String& str){
+#ifdef DEBUG_SERIAL
+	Serial.println(str);
+#endif
+	display_clear();
 	int len=str.length();
 	int x=0;
 	int y=0;
@@ -53,12 +73,7 @@ void display_set_cursor(bool c){
 void display_init(){
 	lcd.init();
 	lcd.backlight();
-	for(int y=0;y<lcdRows;++y){
-		for(int x=0;x<lcdColumns;++x){
-			lcdLines[y][x]=' ';
-			lcdLines_prev[y][x]='0';
-		}
-	}
+	display_clear_force();
 	display_loop();
 }
 void display_loop(){
